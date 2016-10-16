@@ -1,5 +1,8 @@
 package com.github.onehalf.bashni.gui
 
+import com.github.onehalf.bashni.model.GameField
+import com.github.onehalf.bashni.model.ModelGenerator
+
 import javax.swing.*
 import java.awt.*
 
@@ -11,11 +14,18 @@ import java.awt.*
  */
 public class GameJFrame extends JFrame {
 
+    private TextArea textArea
+
     GameJFrame() {
-        super(title: "Саровские башни");
-        add(controlPanel())
-        setMinimumSize(new Dimension(width: 400, height: 300));
+        super('Саровские башни');
+        setLayout(new BorderLayout())
+        textArea = new TextArea()
+        add(textArea, BorderLayout.CENTER)
+        add(controlPanel(), BorderLayout.SOUTH)
+        setMinimumSize(new Dimension(width: 700, height: 300));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE)
+
+        model = ModelGenerator.generate(2, 0)
     }
 
     private JPanel controlPanel() {
@@ -25,5 +35,9 @@ public class GameJFrame extends JFrame {
         closeButton.addActionListener({e -> dispose()})
         panel.add(closeButton)
         panel
+    }
+
+    def setModel(GameField field) {
+        textArea.text = field.asString()
     }
 }

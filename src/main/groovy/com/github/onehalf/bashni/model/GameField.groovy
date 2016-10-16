@@ -1,5 +1,7 @@
 package com.github.onehalf.bashni.model
 
+import java.util.stream.Collectors
+
 /**
  *
  *
@@ -9,4 +11,14 @@ package com.github.onehalf.bashni.model
 class GameField {
 
     final List<Column> columns
+
+    GameField(List<Column> columns) {
+        this.columns = columns
+    }
+
+    def asString() {
+        columns.stream()
+                .map({it.toString()})
+                .collect(Collectors.joining('\n'))
+    }
 }

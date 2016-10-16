@@ -9,4 +9,9 @@ package com.github.onehalf.bashni.model
 class Column {
 
     LinkedList<Brick> content = []
+
+    @Override
+    String toString() {
+        content.toString()
+    }
 }

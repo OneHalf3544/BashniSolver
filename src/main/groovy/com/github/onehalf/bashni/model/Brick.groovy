@@ -1,7 +1,5 @@
 package com.github.onehalf.bashni.model
 
-import java.awt.Color
-
 /**
  *
  *
@@ -12,4 +10,9 @@ class Brick {
 
     Color color
     int size
+
+    @Override
+    String toString() {
+        return size + '_' + color
+    }
 }
